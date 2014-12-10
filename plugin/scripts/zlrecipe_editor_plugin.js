@@ -1,37 +1,38 @@
 /*
-Plugin Name: ZipList Recipe Plugin
-Plugin URI: http://www.ziplist.com/recipe_plugin
-Plugin GitHub: https://github.com/Ziplist/recipe_plugin
-Description: A plugin that adds all the necessary microdata to your recipes, so they will show up in Google's Recipe Search
-Version: 3.0
-Author: ZipList.com
-Author URI: http://www.ziplist.com/
-License: GPLv3 or later
+ Plugin Name: Zip Recipes Plugin
+ Plugin URI: http://www.ziprecipes.net/
+ Plugin GitHub: https://github.com/hgezim/zip-recipes-plugin
+ Description: A plugin that adds all the necessary microdata to your recipes, so they will show up in Google's Recipe Search
+ Version: 4.0.0.9
+ Author: HappyGezim
+ Author URI: http://www.ziprecipes.net/
+ License: GPLv3 or later
 
-Copyright 2011, 2012, 2013, 2014 ZipList, Inc.
-This code is derived from the 1.3.1 build of RecipeSEO released by codeswan: http://sushiday.com/recipe-seo-plugin/
-*/
+ Copyright 2014 Gezim Hoxha
+ This code is derived from the 2.6 version build of ZipList Recipe Plugin released by ZipList Inc.:
+ http://get.ziplist.com/partner-with-ziplist/wordpress-recipe-plugin/ and licensed under GPLv3 or later
+ */
 
 /*
-    This file is part of ZipList Recipe Plugin.
+ This file is part of Zip Recipes Plugin.
 
-    ZipList Recipe Plugin is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+ Zip Recipes Plugin is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
 
-    ZipList Recipe Plugin is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+ Zip Recipes Plugin is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with ZipList Recipe Plugin. If not, see <http://www.gnu.org/licenses/>.
-*/
+ You should have received a copy of the GNU General Public License
+ along with Zip Recipes Plugin. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 (function() {
 
-	tinymce.create('tinymce.plugins.amdEditZLRecipe', {
+	tinymce.create('tinymce.plugins.zrdnEditRecipe', {
 		init: function( editor, url ) {
 			var t = this;
 			t.url = url;
@@ -71,16 +72,16 @@ This code is derived from the 1.3.1 build of RecipeSEO released by codeswan: htt
 					o.content = t._convert_imgs_to_codes(o.content);
 			});
 
-			editor.addButton( 'amdzlrecipe', {
-				title: 'ZipList Recipe',
-				image: url + '/zlrecipe.png',
+			editor.addButton( 'zrdn_buttons', {
+				title: 'Zip Recipes',
+				image: url + '/../images/zrecipes-icon.png',
 				onclick: function() {
 					var recipe_id = null;
 					if (recipe = editor.dom.select('img.amd-zlrecipe-recipe')[0]) {
 						editor.selection.select(recipe);
 						recipe_id = /amd-zlrecipe-recipe-([0-9]+)/i.exec(editor.selection.getNode().id);
 					}
-					var iframe_url = baseurl + '/wp-admin/media-upload.php?post_id=' + ((recipe_id) ? '1-' + recipe_id[1] : zl_post_id) + '&type=amd_zlrecipe&tab=amd_zlrecipe&TB_iframe=true&width=640&height=523';
+					var iframe_url = baseurl + '/wp-admin/media-upload.php?post_id=' + ((recipe_id) ? '1-' + recipe_id[1] : post_id) + '&type=z_recipe&tab=amd_zlrecipe&TB_iframe=true&width=640&height=523';
 					editor.windowManager.open( {
 						title: 'Edit Recipe',
 						url: iframe_url,
@@ -98,7 +99,7 @@ This code is derived from the 1.3.1 build of RecipeSEO released by codeswan: htt
 
 		_convert_codes_to_imgs : function(co) {
             return co.replace(/\[amd-zlrecipe-recipe:([0-9]+)\]/g, function(a, b) {
-								return '<img id="amd-zlrecipe-recipe-'+b+'" class="amd-zlrecipe-recipe" src="' + plugindir + '/zlrecipe-placeholder.png" alt="" />';
+								return '<img id="amd-zlrecipe-recipe-'+b+'" class="amd-zlrecipe-recipe" src="' + plugindir + '/images/zrecipe-placeholder.png" alt="" />';
             });
 		},
 
@@ -110,15 +111,15 @@ This code is derived from the 1.3.1 build of RecipeSEO released by codeswan: htt
 
 		getInfo : function() {
             return {
-                longname : "ZipList Recipe Plugin",
-                author : 'ZipList, Inc.',
-                authorurl : 'http://www.ziplist.com/',
-                infourl : 'http://www.ziplist.com/recipe_plugin',
-                version : "3.0"
+                longname : "Zip Recipes Plugin",
+                author : 'HappyGezim',
+                authorurl : 'http://www.ziprecipes.net/',
+                infourl : 'http://www.ziprecipes.net/',
+                version : "4.0.0.9"
             };
         }
 	});
 
-	tinymce.PluginManager.add('amdzlrecipe', tinymce.plugins.amdEditZLRecipe);
+	tinymce.PluginManager.add('zrdn_plugin', tinymce.plugins.zrdnEditRecipe);
 
 })();

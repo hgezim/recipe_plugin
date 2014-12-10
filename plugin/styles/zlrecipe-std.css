@@ -7,12 +7,8 @@ Author: ZipList.com
 Author URI: http://www.ziplist.com/
 License: GPLv3 or later, unless specified
 
-Copyright 2011, 2012, 2013, 2014 ZipList, Inc.
+Copyright 2011, 2012 ZipList, Inc.
 */
-
-/* Imports */
-/* The following import is required to produce the ZipList button appearance */
-@import url('http://www.zlcdn.com/stylesheets/minibox/generic.css');
 
 /* RESETS */
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -125,7 +121,7 @@ footer, #zlrecipe-container header, #zlrecipe-container hgroup, #zlrecipe-contai
 	margin-top: 5px;
 }
 #zlrecipe-container .zlrecipe-print-link .butn-link {
-    background: url("http://ab-assets.ziplist.com.s3.amazonaws.com/print-icon.png") no-repeat scroll 0 1px transparent;
+    background: url("../images/print-icon.png") no-repeat scroll 0 1px transparent;
     cursor: pointer;
     padding: 0 0 0 20px;
     display: block;
@@ -142,7 +138,7 @@ footer, #zlrecipe-container header, #zlrecipe-container hgroup, #zlrecipe-contai
 #zlrecipe-container .meta span, #zlrecipe-container .zlmeta span { font-weight: normal; }
 
 #zlrecipe-rating .rating {
-  background: url('http://ab-assets.ziplist.com.s3.amazonaws.com/star-rating.gif') no-repeat scroll 0 0;
+  background: url('../images/star-rating.gif') no-repeat scroll 0 0;
   display: inline-block;
   height: 14px;
   text-indent: -9999px;
@@ -198,10 +194,3 @@ footer, #zlrecipe-container header, #zlrecipe-container hgroup, #zlrecipe-contai
 
 /* END SPECIFIC ELEMENT STYLES */
 
-.zl-rmvd {
-	height: 27px;
-	width: 105px;
-	visibility: hidden;
-	pointer-events: none;
-	cursor: default;
-}
